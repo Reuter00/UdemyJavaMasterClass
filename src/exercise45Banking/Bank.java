@@ -42,13 +42,5 @@ public class Bank {
         return -1;
     }
 
-public  boolean addCustomer(String branchname, String customername, Double inicialtransactions){
 
-    int findElement =
-    if (findElement < 0) {
-        System.out.println(name + " dosn't exist!");
-        return false;
-    }
-return true;
-}
 }
