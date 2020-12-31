@@ -1,11 +1,6 @@
 import LinkListChallange67.Album;
 import LinkListChallange67.Song;
-import exercise45Banking.Bank;
-import exercise45Banking.Branch;
-import exercise45Banking.Costumer;
 
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
@@ -27,7 +22,7 @@ public class Main {
         A2.addSong(s3);
         A2.addSong(s4);
 
-      
+
 
     }
 
