@@ -3,6 +3,7 @@ package LinkListChallange67;
 import exercise45Banking.Costumer;
 
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class Album {
     private String albumName;
@@ -17,20 +18,17 @@ public class Album {
     public String getAlbumName() {
         return albumName;
     }
-
-    public ArrayList<Song> getSongArrayList() {
-        return songArrayList;
-    }
-
     public void addSong(Song songName) {
 
         int ifHolder = findSong(songName);
         if (ifHolder == -1) {
             songArrayList.add(songName);
-            System.out.println("'" + songName.getTitle() + "' was added to the playlist: " + albumName);
+            System.out.println("'" + songName.getTitle() + "' was added to the Album: " + albumName);
         } else {
-            System.out.println("!------------------------------------ '" + songName.getTitle() + "' was already in the playlist: " + albumName + " ------------------------------------!");
+            System.out.println("!------------------------------------ '" + songName.getTitle() + "' was already in the Album: " + albumName + " ------------------------------------!");
         }
+
+
     }
 
 
