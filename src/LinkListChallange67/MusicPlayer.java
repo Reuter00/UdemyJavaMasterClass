@@ -4,12 +4,12 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class MusicPlayer {
-    private String musicPlayerTitle;
-    private ArrayList<Song> songArrayList;
+    final String musicPlayerTitle;
+    final ArrayList<Song> songArrayList;
 
-    public MusicPlayer(String musicplayerTitle) {
-        this.musicPlayerTitle = musicplayerTitle;
-        this.songArrayList = new ArrayList<Song>();
+    public MusicPlayer(String musicPlayerTitle) {
+        this.musicPlayerTitle = musicPlayerTitle;
+        this.songArrayList = new ArrayList<>();
     }
 
     public String getMusicPlayerTitle() {
@@ -37,16 +37,7 @@ public class MusicPlayer {
         return this.songArrayList.indexOf(song);
     }
 
-    //Find song name and compare with argument
-    private int findSong(String songName) {
-        for (int i = 0; i < this.songArrayList.size(); i++) {
-            Song song = this.songArrayList.get(i);
-            if (song.getTitle().equals(songName)) {
-                return i;
-            }
-        }
-        return -1;
-    }
+
 
 
     public void whatIsPlaying() {
@@ -58,10 +49,17 @@ public class MusicPlayer {
 
             System.out.println("------------------------------");
             System.out.println("What do you want to do? ");
-            if (songArrayList.get(songArrayList.size() - 1).getTitle() != "") {
+            if ((arrayListLooper + 1) >= songArrayList.size()) {
+                System.out.println(" |||| End of List ||||");
+            } else {
+
                 System.out.println(" 1 - Next song ");
             }
-            System.out.println(" 2 - Previous song  ");
+            if (arrayListLooper == 0) {
+                System.out.println(" |||| Start of List ||||");
+            } else {
+                System.out.println(" 2 - Previous song  ");
+            }
             System.out.println(" 3 - Replay song ");
             System.out.println(" 4 - List current playlist ");
             System.out.println(" 0 - Quit ");
@@ -72,28 +70,49 @@ public class MusicPlayer {
             switch (userChoice) {
                 case "1":
 
+                    if ((arrayListLooper + 1) < songArrayList.size()) {
 
-                    Song nowPlayingSong = this.songArrayList.get(arrayListLooper);
-                    if ((arrayListLooper + 1) >= songArrayList.size()) {
-                        System.out.println("-----------There is no next song, END OF LIST----------------");
-                    } else {
+                        //Creation of the song now and next playing
+                        Song nowPlayingSong = this.songArrayList.get(arrayListLooper);
                         Song nextSong = this.songArrayList.get(arrayListLooper + 1);
+
                         System.out.println(nowPlayingSong.getTitle() + " stopped playing, " + nextSong.getTitle() + " is now playing  ");
                         arrayListLooper = arrayListLooper + 1;
+                    } else {
+                        System.out.println("You reached the end of the playlist!");
                     }
                     break;
                 case "2":
+                    if ((arrayListLooper - 1) >= 0) {
 
+                        //Creation of the song now and next playing
+                        Song nowPlayingSong = this.songArrayList.get(arrayListLooper);
+                        Song previousSong = this.songArrayList.get(arrayListLooper - 1);
+
+                        System.out.println(nowPlayingSong.getTitle() + " stopped playing, " + previousSong.getTitle() + " is now playing  ");
+                        arrayListLooper = arrayListLooper - 1;
+                    } else {
+                        System.out.println("You reached the start of the playlist!");
+                    }
                     break;
                 case "3":
+
+                    Song nowPlayingSong = this.songArrayList.get(arrayListLooper);
+                    System.out.println(nowPlayingSong.getTitle() + " is now repeating  ");
 
                     break;
                 case "4":
 
+                    System.out.println("Playlist songs:");
+                    for (int i = 0; i < songArrayList.size(); i++) {
+                        System.out.println(" " + (i+1) + " - " + songArrayList.get(i).getTitle() );
+                    }
+
+
                     break;
                 case "0":
 
-                    System.out.printf("------------------------Music player will now stop playing------------------------");
+                    System.out.print("------------------------Music player stopped playing------------------------");
                     whileCondition = 1;
                     break;
 
