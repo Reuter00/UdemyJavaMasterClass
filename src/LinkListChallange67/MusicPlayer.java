@@ -49,38 +49,56 @@ public class MusicPlayer {
     }
 
 
-    public void whatIsPlaying(Song songName) {
-        Scanner playerMenuInput = new Scanner(System.in);
+    public void whatIsPlaying() {
+        int whileCondition = 0;
+        int arrayListLooper = 0;
+        while (whileCondition == 0) {
 
-        System.out.println("------------------------------");
-        System.out.println("What do you want to do? ");
-        if (songArrayList.get(0).getTitle() != songName.getTitle()) {
-            System.out.println(" 1 - Next song ");
-        }
-        System.out.println(" 2 - Previous song  ");
-        System.out.println(" 3 - Replay song ");
-        System.out.println(" 4 - List current playlist ");
-        System.out.println(" 0 - Quit1 ");
-        System.out.println("------------------------------");
+            Scanner playerMenuInput = new Scanner(System.in);
 
-        String userChoice = playerMenuInput.nextLine();//Returns String
+            System.out.println("------------------------------");
+            System.out.println("What do you want to do? ");
+            if (songArrayList.get(songArrayList.size() - 1).getTitle() != "") {
+                System.out.println(" 1 - Next song ");
+            }
+            System.out.println(" 2 - Previous song  ");
+            System.out.println(" 3 - Replay song ");
+            System.out.println(" 4 - List current playlist ");
+            System.out.println(" 0 - Quit ");
+            System.out.println("------------------------------");
 
-        switch (userChoice) {
-            case "1":
+            String userChoice = playerMenuInput.nextLine();//Returns String
 
-                break;
-            case "2":
+            switch (userChoice) {
+                case "1":
 
-                break;
-            case "3":
 
-                break;
-            case "4":
+                    Song nowPlayingSong = this.songArrayList.get(arrayListLooper);
+                    if ((arrayListLooper + 1) >= songArrayList.size()) {
+                        System.out.println("-----------There is no next song, END OF LIST----------------");
+                    } else {
+                        Song nextSong = this.songArrayList.get(arrayListLooper + 1);
+                        System.out.println(nowPlayingSong.getTitle() + " stopped playing, " + nextSong.getTitle() + " is now playing  ");
+                        arrayListLooper = arrayListLooper + 1;
+                    }
+                    break;
+                case "2":
 
-                break;
-            case "0":
+                    break;
+                case "3":
 
-                break;
+                    break;
+                case "4":
+
+                    break;
+                case "0":
+
+                    System.out.printf("------------------------Music player will now stop playing------------------------");
+                    whileCondition = 1;
+                    break;
+
+
+            }
 
         }
 

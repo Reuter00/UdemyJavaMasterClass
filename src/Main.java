@@ -29,6 +29,7 @@ public class Main {
 
         m1.addSong(s1);
         m1.addSong(s2);
+        m1.addSong(s4);
 
         m1.whatIsPlaying();
 
