@@ -62,6 +62,7 @@ public class MusicPlayer {
             }
             System.out.println(" 3 - Replay song ");
             System.out.println(" 4 - List current playlist ");
+            System.out.println(" 5 - Remove current song from playlist ");
             System.out.println(" 0 - Quit ");
             System.out.println("------------------------------");
 
@@ -108,6 +109,13 @@ public class MusicPlayer {
                         System.out.println(" " + (i+1) + " - " + songArrayList.get(i).getTitle() );
                     }
 
+
+                    break;
+                case "5":
+
+                    Song nowPlayingSongToDelete = this.songArrayList.get(arrayListLooper);
+                    songArrayList.remove(nowPlayingSongToDelete);
+                    System.out.println(nowPlayingSongToDelete.getTitle() + " was deleted from the playlist  ");
 
                     break;
                 case "0":
