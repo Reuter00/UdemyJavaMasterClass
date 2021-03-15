@@ -1,4 +1,4 @@
-package com.company;
+package Generics;
 
 public class BaseballPlayer extends Player{
     public BaseballPlayer(String name) {
